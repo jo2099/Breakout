@@ -7,6 +7,7 @@
 #define FALSE 0
 #define NUM_LINHAS 4
 #define NUM_COLUNAS 6
+asdasd
 
 typedef struct player
 {
