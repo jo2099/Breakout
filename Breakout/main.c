@@ -1,7 +1,12 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include"raylib.h"
-
+#define screenWidth 1200
+#define screenHeight 800
+#define TRUE 1
+#define FALSE 0
+#define NUM_LINHAS 4
+#define NUM_COLUNAS 6
 
 typedef struct player
 {
@@ -10,52 +15,50 @@ typedef struct player
     float y;
     float altura;
     float largura;
-}player;
+    int num_vidas;
 
-void move_player(player *player)
-{
-        if (IsKeyDown(KEY_RIGHT))
-            player->x += 5;
-        if (IsKeyDown(KEY_LEFT))
-            player->x -= 5;
-       // if (IsKeyDown(KEY_UP))
-            player->y -= 2.0;
-       // if (IsKeyDown(KEY_DOWN))
-            player->y += 2.0;
-}
+} PLAYER;
 
-void aumenta_player(player *player)
+typedef struct tijolo
 {
-    player->largura=player->largura+5;
-}
+    char cor;
+    float x;
+    float y;
+    float altura;
+    float largura;
+    int ativo;
+}TIJOLO;
+
 
 int main(void)
 {
 
- const int screenWidth = 1200;
- const int screenHeight = 800;
- InitWindow(screenWidth, screenHeight, "Breakout");
- SetTargetFPS(60);
-
- player player;
-
- player.y=685;
- player.x=550;
- player.largura=120;
- player.altura=25;
+    PLAYER player;
+    TIJOLO matriz[NUM_LINHAS][NUM_COLUNAS];
+    TIJOLO teste;
 
 
- while (!WindowShouldClose())
- {
-    move_player(&player);
-    if(IsKeyPressed(KEY_A))
-        aumenta_player(&player);
- BeginDrawing();
- ClearBackground(RAYWHITE);
- DrawText("Congrats! You created your first window!", 400, 300, 20, LIGHTGRAY);
- DrawRectangle(player.x,player.y,player.largura,player.altura,RED);
- EndDrawing();
- }
- CloseWindow();
- return 0;
+
+
+    InitWindow(screenWidth, screenHeight, "Breakout");
+    SetTargetFPS(60);
+
+
+
+
+    set_player(&player);
+
+    while (!WindowShouldClose())
+    {
+        move_player(&player);
+        BeginDrawing();
+        ClearBackground(RAYWHITE);
+        DrawText("Congrats! You created your first window!", 400, 300, 20, LIGHTGRAY);
+        desenha_player(&player);
+        desenha_tijolo(teste);
+        desenha_matriz(matriz,NUM_LINHAS);
+        EndDrawing();
+    }
+    CloseWindow();
+    return 0;
 }

@@ -1,6 +1,12 @@
 # depslib dependency file v1.0
-1662151973 source:c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout\breakout\main.c
+1662159885 source:c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout\breakout\main.c
 	<stdio.h>
 	<stdlib.h>
 	"raylib.h"
+
+1662158701 source:c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout\breakout\uteis.c
+	"uteis.h"
+	"raylib.h"
+
+1662158743 c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout\breakout\uteis.h
 
