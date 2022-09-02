@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1662148894 source:c:\users\fleck\onedrive\Área de trabalho\projetos\breakout\breakout\main.c
+	<stdio.h>
+	<stdlib.h>
+	"raylib.h"
+
