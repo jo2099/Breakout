@@ -2,6 +2,7 @@
 #include "raylib.h"
 
 #define screenWidth 1200
+#define screenHeight 800
 
 
 
@@ -22,17 +23,6 @@ void move_player(PLAYER *player)
       }
 
 }
-
-void desenha_player(PLAYER *player)
-{
-    DrawRectangle(player->x,player->y,player->largura,player->altura,RED);
-};
-
-void aumenta_player(PLAYER *player)
-{
-    player->largura=player->largura+5;
-}
-
 void set_player(PLAYER *player) //determina a posição inicial do player
 {
     player->y=685;
@@ -41,6 +31,23 @@ void set_player(PLAYER *player) //determina a posição inicial do player
     player->altura=25;
     player->num_vidas=5;
 }
+
+void desenha_player(PLAYER *player)
+{
+    char numero_vidas[10];
+
+    itoa(player->num_vidas,numero_vidas,10);
+    DrawRectangle(player->x,player->y,player->largura,player->altura,RED);
+    DrawText("vidas: ",screenWidth-150,screenHeight-50,25,RED);
+    DrawText(numero_vidas,screenWidth-50,screenHeight-50,25,RED);
+};
+
+void aumenta_player(PLAYER *player)
+{
+    player->largura=player->largura+5;
+}
+
+
 
 void set_matriz(TIJOLO matriz[][NUM_COLUNAS],int num_linhas)
 {
