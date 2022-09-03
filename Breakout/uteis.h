@@ -1,6 +1,6 @@
 #ifndef UTEIS_H_INCLUDED
 #define UTEIS_H_INCLUDED
-#define NUM_COLUNAS 6
+#define NUM_COLUNAS 8
 
 typedef struct player
 {

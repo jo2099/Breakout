@@ -42,6 +42,30 @@ void set_player(PLAYER *player) //determina a posição inicial do player
     player->num_vidas=5;
 }
 
+void set_matriz(TIJOLO matriz[][NUM_COLUNAS],int num_linhas)
+{
+    int x=15;
+    int y=35;
+    for(int i=0;i<num_linhas;i++)
+    {
+        for(int j=0;j<NUM_COLUNAS;j++)
+        {
+            matriz[i][j].altura=25;
+            matriz[i][j].largura=130;
+            matriz[i][j].x=x;
+            matriz[i][j].y=y;
+            matriz[i][j].cor='r';
+            matriz[i][j].ativo=1;
+
+            x=x+150;
+
+        }
+        x=15;
+        y=y+60;
+
+    }
+}
+
 void desenha_tijolo(TIJOLO tijolo)
 {
     DrawRectangle(tijolo.x,tijolo.y,tijolo.largura,tijolo.altura,RED);
@@ -54,6 +78,7 @@ void desenha_matriz(TIJOLO matriz[][NUM_COLUNAS],int num_linhas)
         for(int j=0;j<NUM_COLUNAS;j++)
         {
             desenha_tijolo(matriz[i][j]);
+
         }
     }
 }

@@ -1,15 +1,15 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include"raylib.h"
+#include"uteis.h"
 #define screenWidth 1200
 #define screenHeight 800
 #define TRUE 1
 #define FALSE 0
 #define NUM_LINHAS 4
-#define NUM_COLUNAS 6
+#define NUM_COLUNAS 8
 
-
-typedef struct player
+/*typedef struct player
 {
     char cor;
     float x;
@@ -29,7 +29,7 @@ typedef struct tijolo
     float largura;
     int ativo;
 }TIJOLO;
-
+*/
 
 int main(void)
 {
@@ -48,6 +48,7 @@ int main(void)
 
 
     set_player(&player);
+    set_matriz(matriz,NUM_LINHAS);
 
     while (!WindowShouldClose())
     {
@@ -56,7 +57,7 @@ int main(void)
         ClearBackground(RAYWHITE);
         DrawText("Congrats! You created your first window!", 400, 300, 20, LIGHTGRAY);
         desenha_player(&player);
-        desenha_tijolo(teste);
+        //desenha_tijolo(teste);
         desenha_matriz(matriz,NUM_LINHAS);
         EndDrawing();
     }
