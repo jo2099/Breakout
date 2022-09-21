@@ -1,13 +1,42 @@
 # depslib dependency file v1.0
-1662164243 source:c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout\breakout\main.c
+1663776567 source:c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout\breakout\main.c
+	"uteis.h"
+	"raylib.h"
+	"top5_funcoes.h"
+	"menu_principal.h"
 	<stdio.h>
 	<stdlib.h>
 	"raylib.h"
 	"uteis.h"
 
-1662165432 source:c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout\breakout\uteis.c
+1663777905 source:c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout\breakout\uteis.c
 	"uteis.h"
 	"raylib.h"
+	"top5_funcoes.h"
 
-1662164231 c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout\breakout\uteis.h
+1663777001 c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout\breakout\uteis.h
+	<stdio.h>
+	<stdlib.h>
+	"raylib.h"
+	"uteis.h"
+
+1663362158 source:c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout\breakout\menu_principal.c
+	<stdio.h>
+	"raylib.h"
+	"menu_principal.h"
+	"top5_funcoes.h"
+
+1663646404 c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout\breakout\menu_principal.h
+	"raylib.h"
+
+1663776959 source:c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout\breakout\top5_funcoes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"top5_funcoes.h"
+	"menu_principal.h"
+	"raylib.h"
+	"uteis.h"
+
+1663646589 c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout\breakout\top5_funcoes.h
 

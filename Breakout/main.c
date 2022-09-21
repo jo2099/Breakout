@@ -1,66 +1,97 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include"raylib.h"
-#include"uteis.h"
-#define screenWidth 1200
-#define screenHeight 800
+#include "uteis.h"
+#include "raylib.h"
+#include "top5_funcoes.h"
+#include"menu_principal.h"
+#define screenWidth 800
+#define screenHeight 450
+#include <stdio.h>
+#include <stdlib.h>
+#include "raylib.h"
+#include "uteis.h"
+#define screenWidth 800
+#define screenHeight 450
 #define TRUE 1
 #define FALSE 0
-#define NUM_LINHAS 4
-#define NUM_COLUNAS 8
+#define NUM_LINHAS 5
+#define NUM_COLUNAS 10
 
-/*typedef struct player
+
+int main()
 {
-    char cor;
-    float x;
-    float y;
-    float altura;
-    float largura;
-    int num_vidas;
+    BOTAO botao_jogar;
+    botao_jogar.altura=50;
+    botao_jogar.largura=50;
+    botao_jogar.cor=RED;
+    botao_jogar.pos_x=100;
+    botao_jogar.pos_y=100;
 
-} PLAYER;
+    BOTAO botao_opcoes;
+    botao_opcoes.altura=50;
+    botao_opcoes.largura=50;
+    botao_opcoes.cor=RED;
+    botao_opcoes.pos_x=100;
+    botao_opcoes.pos_y=150;
 
-typedef struct tijolo
-{
-    char cor;
-    float x;
-    float y;
-    float altura;
-    float largura;
-    int ativo;
-}TIJOLO;
-*/
+    BOTAO botao_top5;
+    botao_top5.altura=50;
+    botao_top5.largura=50;
+    botao_top5.cor=RED;
+    botao_top5.pos_x=100;
+    botao_top5.pos_y=200;
 
-int main(void)
-{
 
+    int flag_jogo=0;
+    int flag_over=0;
+    int flag_enter=0;
+    int flag_maior=0;
+    int conta_letras=0;
+    TIJOLO matriz[NUM_LINHAS][10];
+    FILE *melhores;
     PLAYER player;
-    TIJOLO matriz[NUM_LINHAS][NUM_COLUNAS];
-    TIJOLO teste;
+    BOLA bola;
+    Music musica;
 
 
+    InitWindow(screenWidth, screenHeight, "BREAKOUT");
+    InitAudioDevice();
+    musica=LoadMusicStream("resources/NeverGonna.mp3");
+    PlayMusicStream(musica);
 
+    set_game(&player,matriz,NUM_LINHAS,&bola);
 
-    InitWindow(screenWidth, screenHeight, "Breakout");
     SetTargetFPS(60);
-
-
-
-
-    set_player(&player);
-    set_matriz(matriz,NUM_LINHAS);
-
     while (!WindowShouldClose())
     {
-        move_player(&player);
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
-        DrawText("Congrats! You created your first window!", 400, 300, 20, LIGHTGRAY);
-        desenha_player(&player);
-        //desenha_tijolo(teste);
-        desenha_matriz(matriz,NUM_LINHAS);
-        EndDrawing();
+        UpdateMusicStream(musica);
+        calcula_menuP(&botao_jogar,&botao_opcoes,&botao_top5);
+        desenha_menuP(botao_jogar,botao_opcoes,botao_top5);
+
+
+        if(clica_botao_jogar(&botao_jogar)==1)
+        {
+            flag_jogo=1;
+        }
+
+        while(flag_jogo==1)
+        {
+            jogo(&player,&flag_jogo,&flag_over,matriz,NUM_LINHAS,&bola,&flag_enter,&conta_letras,&flag_maior,musica);
+        }
+
+        if(clica_botao_jogar(&botao_top5))
+        {
+            while(!WindowShouldClose())
+            {
+                desenha_menu5(melhores,musica);
+            }
+        }
+
     }
+
+
+    UnloadMusicStream(musica);
+    CloseAudioDevice();
     CloseWindow();
+
     return 0;
 }
+

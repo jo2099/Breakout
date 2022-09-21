@@ -31,6 +31,21 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="menu_principal.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="menu_principal.h" />
+		<Unit filename="top5_funcoes.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="top5_funcoes.h" />
+		<Unit filename="uteis.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="uteis.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
