@@ -30,11 +30,12 @@ typedef struct tijolo
 
 typedef struct bola
 {
-    Color cor;
     Vector2 centro;
-    float raio;
     Vector2 vel;
+    int raio;
     int ativo;
+    Color cor;
+
 }BOLA;
 
 void desenha_player(PLAYER *player);

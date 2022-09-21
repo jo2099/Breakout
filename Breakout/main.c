@@ -2,6 +2,7 @@
 #include "raylib.h"
 #include "top5_funcoes.h"
 #include"menu_principal.h"
+#include"bola.h"
 #define screenWidth 800
 #define screenHeight 450
 #include <stdio.h>
@@ -46,10 +47,12 @@ int main()
     int flag_maior=0;
     int conta_letras=0;
     TIJOLO matriz[NUM_LINHAS][10];
+    JOGADOR melhoress[5];
     FILE *melhores;
     PLAYER player;
     BOLA bola;
     Music musica;
+
 
 
     InitWindow(screenWidth, screenHeight, "BREAKOUT");

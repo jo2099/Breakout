@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include "raylib.h"
 #include "menu_principal.h"
+#include "bola.h"
 #include"top5_funcoes.h"
 
 

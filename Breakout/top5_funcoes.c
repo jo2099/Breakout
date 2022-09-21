@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include "top5_funcoes.h"
+#include"bola.h"
 #include"menu_principal.h"
 #include "raylib.h"
 #include "uteis.h"
@@ -61,7 +62,7 @@ JOGADOR pega_ultimo()           //retorna ultimo jogador da lista armazenada no 
     return ultimo;
 }
 
-void tela_pede_nome(char nome[30],int *flag_enter)  //funcao com nenhuma entrada e uma saida por referencia,desenha na tela oque o usuario digitar e retorna isso na string nome
+void tela_pede_nome(char nome[30])  //funcao com nenhuma entrada e uma saida por referencia,desenha na tela oque o usuario digitar e retorna isso na string nome
 {
     int tecla;
     int conta_letras=0;
@@ -70,7 +71,7 @@ void tela_pede_nome(char nome[30],int *flag_enter)  //funcao com nenhuma entrada
 
     while(!IsKeyPressed(KEY_BACKSPACE))
     {
-        BeginDrawing()
+        BeginDrawing();
         ClearBackground(BLACK);
 
         DrawText("insira seu nome",100,100,100,RED);
@@ -85,12 +86,11 @@ void tela_pede_nome(char nome[30],int *flag_enter)  //funcao com nenhuma entrada
         }
         tecla=GetCharPressed();
         DrawText(nome,100,200,100,RED);
-
-        *flag_enter=1;
+        EndDrawing();
 
 
     }
-    EndDrawing();
+
 
 }
 

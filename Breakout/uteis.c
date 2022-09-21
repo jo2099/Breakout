@@ -1,6 +1,7 @@
 #include "uteis.h"
 #include "raylib.h"
 #include "top5_funcoes.h"
+#include "bola.h"
 #define screenWidth 800
 #define screenHeight 450
 
@@ -84,7 +85,7 @@ void game_over(PLAYER *player,int *flag_jogo,int *flag_enter)
 
         if(player->score>last.pontuacao)
         {
-            tela_pede_nome(nome,flag_enter);
+            tela_pede_nome(nome);
             novo_jogador(player,nome);
             *flag_jogo=0;
         }
@@ -194,14 +195,7 @@ void lanca_bola(BOLA *bola)
     }
 }
 
-void move_bola(BOLA *bola)
-{
-    bola->centro.x=bola->centro.x+bola->vel.x;
-    bola->centro.y=bola->centro.y+bola->vel.y;
 
-
-
-}
 
 void calcula_game(PLAYER *player, int *flag_jogo,BOLA *bola,int *flag_enter)
 {
@@ -226,7 +220,7 @@ void calcula_game(PLAYER *player, int *flag_jogo,BOLA *bola,int *flag_enter)
              lanca_bola(bola);          //lanca a bola e poe velocidade nela
              bola->centro.x=player->corpo.x+40;
          }
-         move_bola(bola);               //move a bola com o tempo
+         funcao_bola(bola);              // a bola com o tempo
          aumenta_score(player);         //
          damage_player(player);
          game_over(player,flag_jogo,flag_enter);             //funcao que causa game over
