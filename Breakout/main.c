@@ -55,9 +55,10 @@ int main()
 
 
 
+
     InitWindow(screenWidth, screenHeight, "BREAKOUT");
     InitAudioDevice();
-    musica=LoadMusicStream("resources/NeverGonna.mp3");
+    musica=LoadMusicStream("resources/megalovania.mp3");
     PlayMusicStream(musica);
 
     set_game(&player,matriz,NUM_LINHAS,&bola);

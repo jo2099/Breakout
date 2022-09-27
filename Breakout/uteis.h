@@ -18,6 +18,7 @@ typedef struct player
     Rectangle corpo;
     int num_vidas;
     int score;
+    Vector2 vel;
 
 }PLAYER;
 
@@ -32,7 +33,7 @@ typedef struct bola
 {
     Vector2 centro;
     Vector2 vel;
-    int raio;
+    float raio;
     int ativo;
     Color cor;
 
@@ -50,7 +51,7 @@ void desenha_matriz(TIJOLO matriz[][NUM_COLUNAS],int num_linhas);
 
 void set_game(PLAYER *player,TIJOLO matriz[][NUM_COLUNAS],int num_linhas,BOLA *bola); //inicia os elementos do jogo
 
-void calcula_game(PLAYER *player, int *flag_jogo,BOLA *bola,int *flag_enter); //calcula a logica do jogo
+void calcula_game(PLAYER *player, int *flag_jogo,BOLA *bola,int *flag_enter,TIJOLO matriz[NUM_LINHAS][NUM_COLUNAS]); //calcula a logica do jogo
 
 void desenha_game(PLAYER *player,TIJOLO matriz[][NUM_COLUNAS],int num_linhas,BOLA *bola,Music musica); //desenha os elementos do jogo
 

@@ -14,13 +14,13 @@ void move_player(PLAYER *player)
       if(player->corpo.x <=screenWidth-player->corpo.width)
       {
           if (IsKeyDown(KEY_RIGHT))
-            player->corpo.x += 8;
+            player->corpo.x += player->vel.x;
       }
 
       if (player->corpo.x >=0)
       {
           if (IsKeyDown(KEY_LEFT))
-            player->corpo.x -= 8;
+            player->corpo.x -= player->vel.x;
       }
 
 }
@@ -33,6 +33,8 @@ void set_player(PLAYER *player) //determina a posição inicial do player
     player->corpo.x=(screenWidth/2-player->corpo.width/2);
     player->num_vidas=5;
     player->score=0;
+    player->vel.x=8;
+    player->vel.y=0;
 }
 
 void desenha_player(PLAYER *player)
@@ -63,7 +65,7 @@ void damage_player(PLAYER *player)
 
 }
 
-void game_over(PLAYER *player,int *flag_jogo,int *flag_enter)
+void game_over(PLAYER *player,int *flag_jogo,int *flag_enter,TIJOLO matriz[NUM_LINHAS][NUM_COLUNAS],BOLA *bola)
 {
     JOGADOR last;
 
@@ -74,7 +76,7 @@ void game_over(PLAYER *player,int *flag_jogo,int *flag_enter)
         last=pega_ultimo();
         char score[20];
         itoa(player->score,score,10);
-        while(!IsKeyDown(KEY_ENTER))
+        while(!IsKeyPressed(KEY_ENTER))
         {
             BeginDrawing();
             ClearBackground(BLACK);
@@ -93,7 +95,7 @@ void game_over(PLAYER *player,int *flag_jogo,int *flag_enter)
 
 
 
-
+    set_game(player,matriz,NUM_LINHAS,bola);
     }
 
 
@@ -153,11 +155,14 @@ void desenha_tijolo(TIJOLO tijolo)
 
 void desenha_matriz(TIJOLO matriz[][NUM_COLUNAS],int num_linhas)
 {
-    for(int i=0;i<num_linhas;i++)
+    for(int i=0; i<num_linhas; i++)
     {
-        for(int j=0;j<NUM_COLUNAS;j++)
+        for(int j=0; j<NUM_COLUNAS; j++)
         {
-            desenha_tijolo(matriz[i][j]);
+            if(matriz[i][j].ativo)
+            {
+                desenha_tijolo(matriz[i][j]);
+            }
 
         }
     }
@@ -192,12 +197,13 @@ void lanca_bola(BOLA *bola)
     {
         bola->ativo=1;
         bola->vel.y=-3;
+        bola->vel.x=-3;
     }
 }
 
 
 
-void calcula_game(PLAYER *player, int *flag_jogo,BOLA *bola,int *flag_enter)
+void calcula_game(PLAYER *player, int *flag_jogo,BOLA *bola,int *flag_enter,TIJOLO matriz[NUM_LINHAS][NUM_COLUNAS])
 {
     int flag_pause;
 
@@ -220,10 +226,10 @@ void calcula_game(PLAYER *player, int *flag_jogo,BOLA *bola,int *flag_enter)
              lanca_bola(bola);          //lanca a bola e poe velocidade nela
              bola->centro.x=player->corpo.x+40;
          }
-         funcao_bola(bola);              // a bola com o tempo
-         aumenta_score(player);         //
+         funcao_bola(bola,player,matriz);              // a bola com o tempo
+         aumenta_score(player);
          damage_player(player);
-         game_over(player,flag_jogo,flag_enter);             //funcao que causa game over
+         game_over(player,flag_jogo,flag_enter,matriz,bola);             //funcao que causa game over
     }
 
     if(!flag_pause)
@@ -240,7 +246,8 @@ void calcula_game(PLAYER *player, int *flag_jogo,BOLA *bola,int *flag_enter)
 void jogo(PLAYER *player,int *flag_jogo,int *flag_over,TIJOLO matriz[][NUM_COLUNAS],int num_linhas,BOLA *bola,int *flag_enter,int *conta_letras,int *flag_maior,Music musica)
 {
 
-        calcula_game(player,flag_jogo,bola,flag_enter);
+
+        calcula_game(player,flag_jogo,bola,flag_enter,matriz);
         desenha_game(player,matriz,num_linhas,bola,musica);
 
 

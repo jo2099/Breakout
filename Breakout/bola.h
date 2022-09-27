@@ -19,7 +19,7 @@
 #define NUM_COLUNAS 10
 
 
-void funcao_bola (BOLA *bola);
+void funcao_bola (BOLA *bola,PLAYER *player,TIJOLO matriz[NUM_LINHAS][NUM_COLUNAS]);
 
 
 #endif // BOLA_H_INCLUDED
