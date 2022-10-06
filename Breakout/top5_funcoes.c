@@ -8,13 +8,13 @@
 #include "uteis.h"
 
 
-void desenha_menu5(FILE *pt_arq,Music musica) //recebe um arquivo e desenha os jogadores do arquivo
+void desenha_menu5(FILE *pt_arq,Music musica,int*flag_musica) //recebe um arquivo e desenha os jogadores do arquivo
 {
   JOGADOR lista_jogador[5];
   char score[100];
   int y=100;
-  UpdateMusicStream(musica);
 
+  pause_musica(musica,flag_musica);
   pt_arq=fopen("top_five.bin","rb");
   for(int i=0;i<5;i++)
   {
@@ -23,7 +23,7 @@ void desenha_menu5(FILE *pt_arq,Music musica) //recebe um arquivo e desenha os j
 
 
       BeginDrawing();
-        ClearBackground(RAYWHITE);
+        ClearBackground(BLACK);
         DrawText(lista_jogador[i].nome,100,y,50,RED);
         DrawText(score,600,y,50,RED);
         y+=50;                                              //espacamento entre jogadores
@@ -85,7 +85,7 @@ void tela_pede_nome(char nome[30])  //funcao com nenhuma entrada e uma saida por
             conta_letras++;
         }
         tecla=GetCharPressed();
-        DrawText(nome,100,200,100,RED);
+        DrawText(nome,150,200,75,RED);
         EndDrawing();
 
 

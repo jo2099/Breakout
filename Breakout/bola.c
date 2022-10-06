@@ -35,25 +35,21 @@ int calc_faixa_y(BOLA *bola,Rectangle retangulo)
 
 void funcao_bola (BOLA *bola,PLAYER *player,TIJOLO matriz[NUM_LINHAS][NUM_COLUNAS])
 {
+    float centro_player=player->corpo.x+(player->corpo.width/2);
 
     bola->centro.x += bola->vel.x;
     bola->centro.y += bola->vel.y;
 
     if((bola->centro.x >= (screenWidth - bola->raio)) || (bola->centro.x <= bola->raio)) bola->vel.x *= -1.0f;
-    if((bola->centro.y >= (screenHeight - bola->raio)) || (bola->centro.y <= bola->raio)) bola->vel.y *= -1.0f;
+    if(bola->centro.y <= bola->raio) bola->vel.y *= -1.0f;
+    if(bola->centro.y >= screenHeight)
+    {
+        set_bola(bola);
+        player->num_vidas--;
+
+    }
 
 //colisao com o player
-    /*if(CheckCollisionCircleRec(bola->centro,bola->raio,player->corpo))
-    {
-        if(calc_faixa_y(bola,player->corpo))
-        {
-            bola->vel.x=player->vel.x;
-            bola->vel.x *=-1;
-        }
-        else
-            bola->vel.y *=-1;
-    }
-*/
 
 if(CheckCollisionCircleRec(bola->centro,bola->raio,player->corpo))
 {
@@ -62,7 +58,7 @@ if(CheckCollisionCircleRec(bola->centro,bola->raio,player->corpo))
     {
 
         bola->vel.y*=-1;
-        //bola->vel.x=(bola->centro.x - player->corpo.x)/((player->corpo.width/2)*5);
+        bola->vel.x=(bola->centro.x-centro_player)/5;
 
     }
 }

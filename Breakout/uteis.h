@@ -27,6 +27,7 @@ typedef struct tijolo
     Color cor;
     Rectangle corpo;
     int ativo;
+    char especial;
 }TIJOLO;
 
 typedef struct bola
@@ -47,13 +48,13 @@ void aumenta_player(PLAYER *player);
 
 void desenha_tijolo(TIJOLO tijolo);
 
-void desenha_matriz(TIJOLO matriz[][NUM_COLUNAS],int num_linhas);
+void desenha_matriz(TIJOLO matriz[NUM_LINHAS][NUM_COLUNAS]);
 
-void set_game(PLAYER *player,TIJOLO matriz[][NUM_COLUNAS],int num_linhas,BOLA *bola); //inicia os elementos do jogo
+void set_game(PLAYER *player,TIJOLO matriz[NUM_LINHAS][NUM_COLUNAS],BOLA *bola,FILE *arq_nivel,int *nivel); //inicia os elementos do jogo
 
-void calcula_game(PLAYER *player, int *flag_jogo,BOLA *bola,int *flag_enter,TIJOLO matriz[NUM_LINHAS][NUM_COLUNAS]); //calcula a logica do jogo
+void calcula_game(PLAYER *player, int *flag_jogo,BOLA *bola,int *flag_enter,TIJOLO matriz[NUM_LINHAS][NUM_COLUNAS],FILE *arq_nivel,int *nivel); //calcula a logica do jogo
 
-void desenha_game(PLAYER *player,TIJOLO matriz[][NUM_COLUNAS],int num_linhas,BOLA *bola,Music musica); //desenha os elementos do jogo
+void desenha_game(PLAYER *player,TIJOLO matriz[NUM_LINHAS][NUM_COLUNAS],BOLA *bola,Music musica,int *flag_musica); //desenha os elementos do jogo
 
 void diminui_vidas(PLAYER *player);
 

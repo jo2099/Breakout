@@ -45,15 +45,16 @@ int main()
     int flag_over=0;
     int flag_enter=0;
     int flag_maior=0;
+    int flag_musica;
     int conta_letras=0;
-    TIJOLO matriz[NUM_LINHAS][10];
+    int nivel=0;
+    TIJOLO matriz[NUM_LINHAS][NUM_COLUNAS];
     JOGADOR melhoress[5];
     FILE *melhores;
+    FILE *niveis;
     PLAYER player;
     BOLA bola;
     Music musica;
-
-
 
 
     InitWindow(screenWidth, screenHeight, "BREAKOUT");
@@ -61,12 +62,14 @@ int main()
     musica=LoadMusicStream("resources/megalovania.mp3");
     PlayMusicStream(musica);
 
-    set_game(&player,matriz,NUM_LINHAS,&bola);
+    set_game(&player,matriz,&bola,niveis,&nivel);
 
     SetTargetFPS(60);
     while (!WindowShouldClose())
     {
-        UpdateMusicStream(musica);
+
+       pause_musica(musica,&flag_musica);
+
         calcula_menuP(&botao_jogar,&botao_opcoes,&botao_top5);
         desenha_menuP(botao_jogar,botao_opcoes,botao_top5);
 
@@ -78,19 +81,18 @@ int main()
 
         while(flag_jogo==1)
         {
-            jogo(&player,&flag_jogo,&flag_over,matriz,NUM_LINHAS,&bola,&flag_enter,&conta_letras,&flag_maior,musica);
+            jogo(&player,&flag_jogo,&flag_over,matriz,&bola,&flag_enter,&conta_letras,&flag_maior,musica,&flag_musica,niveis,&nivel);
         }
 
         if(clica_botao_jogar(&botao_top5))
         {
             while(!WindowShouldClose())
             {
-                desenha_menu5(melhores,musica);
+                desenha_menu5(melhores,musica,&flag_musica);
             }
         }
 
     }
-
 
     UnloadMusicStream(musica);
     CloseAudioDevice();
