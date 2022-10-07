@@ -47,22 +47,13 @@ void desenha_player(PLAYER *player)
     DrawRectangle(player->corpo.x,player->corpo.y,player->corpo.width,player->corpo.height,RED);
     DrawText("vidas: ",screenWidth-150,screenHeight-25,15,RED);
     DrawText(numero_vidas,screenWidth-50,screenHeight-25,15,RED);
-    DrawText("score:",100,screenHeight-25,15,RED);
-    DrawText(score,50,screenHeight-25,15,RED);
+    DrawText("score:",10,screenHeight-25,15,RED);
+    DrawText(score,85,screenHeight-25,15,RED);
 };
 
 void aumenta_player(PLAYER *player)
 {
     player->corpo.width=player->corpo.width+5;
-}
-
-void damage_player(PLAYER *player)
-{
-    if(IsKeyPressed(KEY_B))
-    {
-        player->num_vidas--;
-    }
-
 }
 
 int acabou_matriz(TIJOLO matriz[NUM_LINHAS][NUM_COLUNAS])
@@ -88,7 +79,7 @@ void game_over(PLAYER *player,int *flag_jogo,int *flag_enter,TIJOLO matriz[NUM_L
 
 
     char nome[30];
-    if(player->num_vidas==0 || *nivel >0)
+    if(player->num_vidas==0 || *nivel >3)
     {
         last=pega_ultimo();
         char score[20];
@@ -133,7 +124,6 @@ char le_cor(FILE *arq)
 
 }
 
-
 Color gera_cor(char cor)
 {
 
@@ -156,7 +146,7 @@ Color gera_cor(char cor)
         return BLUE;
         break;
     case 'x':
-        return ORANGE;
+        return PURPLE;
         break;
     default:
         return WHITE;
@@ -164,25 +154,6 @@ Color gera_cor(char cor)
     }
 
 
-}
-
-char power_up()
-{
-    int numero;
-    numero=rand()%3;
-
-    if(numero==0)
-    {
-        return 'a';
-    }
-    else if(numero==1)
-    {
-        return 'b';
-    }
-    else if(numero==2)
-    {
-        return 'c';
-    }
 }
 
 void set_matriz(TIJOLO matriz[NUM_LINHAS][NUM_COLUNAS],FILE *arq_nivel,int *nivel_c)
@@ -238,11 +209,6 @@ void set_matriz(TIJOLO matriz[NUM_LINHAS][NUM_COLUNAS],FILE *arq_nivel,int *nive
         x=30;
         y=y+30;
 
-    }
-    for(int i=0;i<3;i++)
-    {
-
-        matriz[rand()%6][rand()%11].especial=power_up();
     }
     fclose(arq_nivel);
 
@@ -338,7 +304,6 @@ void calcula_game(PLAYER *player, int *flag_jogo,BOLA *bola,int *flag_enter,TIJO
              bola->centro.x=player->corpo.x+40;
          }
          funcao_bola(bola,player,matriz);              // a bola com o tempo
-         damage_player(player);
          game_over(player,flag_jogo,flag_enter,matriz,bola,arq_nivel,nivel);             //funcao que causa game over
          win(player,matriz,bola,arq_nivel,nivel);
     }
@@ -372,8 +337,6 @@ void pause_musica(Music musica,int *flag_musica)
     if(*flag_musica)
         UpdateMusicStream(musica);
 }
-
-
 
 void desenha_game(PLAYER *player,TIJOLO matriz[NUM_LINHAS][NUM_COLUNAS],BOLA *bola,Music musica,int *flag_musica)
 {

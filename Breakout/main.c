@@ -21,24 +21,17 @@ int main()
 {
     BOTAO botao_jogar;
     botao_jogar.altura=50;
-    botao_jogar.largura=50;
+    botao_jogar.largura=100;
     botao_jogar.cor=RED;
-    botao_jogar.pos_x=100;
-    botao_jogar.pos_y=100;
-
-    BOTAO botao_opcoes;
-    botao_opcoes.altura=50;
-    botao_opcoes.largura=50;
-    botao_opcoes.cor=RED;
-    botao_opcoes.pos_x=100;
-    botao_opcoes.pos_y=150;
+    botao_jogar.pos_x=350;
+    botao_jogar.pos_y=250;
 
     BOTAO botao_top5;
     botao_top5.altura=50;
-    botao_top5.largura=50;
+    botao_top5.largura=100;
     botao_top5.cor=RED;
-    botao_top5.pos_x=100;
-    botao_top5.pos_y=200;
+    botao_top5.pos_x=350;
+    botao_top5.pos_y=305;
 
 
     int flag_jogo=0;
@@ -70,11 +63,11 @@ int main()
 
        pause_musica(musica,&flag_musica);
 
-        calcula_menuP(&botao_jogar,&botao_opcoes,&botao_top5);
-        desenha_menuP(botao_jogar,botao_opcoes,botao_top5);
+        calcula_menuP(&botao_jogar,&botao_top5);
+        desenha_menuP(botao_jogar,botao_top5);
 
 
-        if(clica_botao_jogar(&botao_jogar)==1)
+        if(clica_botao(&botao_jogar)==1)
         {
             flag_jogo=1;
         }
@@ -84,7 +77,7 @@ int main()
             jogo(&player,&flag_jogo,&flag_over,matriz,&bola,&flag_enter,&conta_letras,&flag_maior,musica,&flag_musica,niveis,&nivel);
         }
 
-        if(clica_botao_jogar(&botao_top5))
+        if(clica_botao(&botao_top5))
         {
             while(!WindowShouldClose())
             {

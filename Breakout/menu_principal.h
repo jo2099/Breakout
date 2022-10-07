@@ -16,14 +16,12 @@ typedef struct botao
 }BOTAO;
 
 
+void calcula_menuP(BOTAO *jogar,BOTAO *top5);
 
-
-
-
-
-void calcula_menuP(BOTAO *jogar,BOTAO *opcoes,BOTAO *top5);
-void desenha_menuOP();
 void desenha_botao(BOTAO *botao,char text[15]);
+
+void muda_cor_botao(BOTAO *botao,Color cor);
+
 int pos_cursor_botao(int pos_x_mouse,int pos_y_mouse,BOTAO *botao);//verifica se o mouse esta em cima do botao
 
 

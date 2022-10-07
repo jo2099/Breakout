@@ -9,7 +9,7 @@ void desenha_botao(BOTAO *botao,char text1[15])
 {
 
     DrawRectangle(botao->pos_x,botao->pos_y,botao->largura,botao->altura,botao->cor);
-    DrawText(text1,botao->pos_x,botao->pos_y+5,15,BLACK);
+    DrawText(text1,botao->pos_x+25,botao->pos_y+10,25,BLACK);
 }
 
 int pos_cursor_botao(int pos_x_mouse,int pos_y_mouse,BOTAO *botao)
@@ -23,13 +23,13 @@ int pos_cursor_botao(int pos_x_mouse,int pos_y_mouse,BOTAO *botao)
         return 0;
 }
 
-void desenha_menuP(BOTAO jogar,BOTAO opcoes,BOTAO top5)
+void desenha_menuP(BOTAO jogar,BOTAO top5)
 {
     BeginDrawing();
     ClearBackground(BLACK);
-    DrawText("menu principal-BREAKOUT",screenWidth/4.5,screenHeight-screenHeight/1.5,40,RED);
+    DrawText("BREAKOUT",screenWidth/4.5,screenHeight-screenHeight/1.4,75,RED);
+    DrawText("M-mute",screenWidth-120,25,30,RED);
     desenha_botao(&top5,"top5");
-    desenha_botao(&opcoes,"opcoes");
     desenha_botao(&jogar,"jogar");
 
     EndDrawing();
@@ -48,7 +48,7 @@ void muda_cor_botao(BOTAO *botao,Color cor)
     }
 }
 
-int clica_botao_jogar(BOTAO *botao)
+int clica_botao(BOTAO *botao)
 {
     if(pos_cursor_botao(GetMouseX(),GetMouseY(),botao)==1 && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)==1)
        {
@@ -58,11 +58,10 @@ int clica_botao_jogar(BOTAO *botao)
         return 0;
 }
 
-void calcula_menuP(BOTAO *jogar,BOTAO *opcoes,BOTAO *top5)
+void calcula_menuP(BOTAO *jogar,BOTAO *top5)
 {
-    clica_botao_jogar(jogar);
+    clica_botao(jogar);
     muda_cor_botao(jogar,RED);
-    muda_cor_botao(opcoes,GREEN);
     muda_cor_botao(top5,PURPLE);
 
 

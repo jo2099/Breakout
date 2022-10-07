@@ -24,12 +24,7 @@ int calc_faixa_y(BOLA *bola,Rectangle retangulo)
     if(((bola->centro.y+bola->raio)>retangulo.y) && (bola->centro.y-bola->raio) < retangulo.y + retangulo.height)
         faixa_y=1;
 
-    if(faixa_y)
-    {
-        return 1;
-    }
-    else
-        return 0;
+    return faixa_y;
 
 }
 
@@ -58,11 +53,12 @@ if(CheckCollisionCircleRec(bola->centro,bola->raio,player->corpo))
     {
 
         bola->vel.y*=-1;
-        bola->vel.x=(bola->centro.x-centro_player)/5;
+        bola->vel.x=( bola->centro.x-centro_player)/5;
 
     }
 }
 
+//colisao com os tijolos
 for(int i=0;i<NUM_LINHAS;i++)
 {
     for(int j=0;j<NUM_COLUNAS;j++)

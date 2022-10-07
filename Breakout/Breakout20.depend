@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1665086708 source:c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout-main\breakout-main\breakout\bola.c
+1665103316 source:c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout-main\breakout-main\breakout\bola.c
 	"uteis.h"
 	"raylib.h"
 	"top5_funcoes.h"
@@ -9,18 +9,19 @@
 	"raylib.h"
 	"uteis.h"
 
-1664844789 c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout-main\breakout-main\breakout\uteis.h
+1665101875 c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout-main\breakout-main\breakout\uteis.h
 	<stdio.h>
 	<stdlib.h>
 	"raylib.h"
 	"uteis.h"
 
-1663798055 c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout-main\breakout-main\breakout\top5_funcoes.h
+1665101934 c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout-main\breakout-main\breakout\top5_funcoes.h
+	"uteis.h"
 
-1663798055 c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout-main\breakout-main\breakout\menu_principal.h
+1665103018 c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout-main\breakout-main\breakout\menu_principal.h
 	"raylib.h"
 
-1664835504 source:c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout-main\breakout-main\breakout\main.c
+1665102457 source:c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout-main\breakout-main\breakout\main.c
 	"uteis.h"
 	"raylib.h"
 	"top5_funcoes.h"
@@ -42,14 +43,14 @@
 	"raylib.h"
 	"uteis.h"
 
-1663798055 source:c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout-main\breakout-main\breakout\menu_principal.c
+1665102612 source:c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout-main\breakout-main\breakout\menu_principal.c
 	<stdio.h>
 	"raylib.h"
 	"menu_principal.h"
 	"bola.h"
 	"top5_funcoes.h"
 
-1665093563 source:c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout-main\breakout-main\breakout\top5_funcoes.c
+1665103170 source:c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout-main\breakout-main\breakout\top5_funcoes.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -59,7 +60,7 @@
 	"raylib.h"
 	"uteis.h"
 
-1665094408 source:c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout-main\breakout-main\breakout\uteis.c
+1665103762 source:c:\users\fleck\onedrive\햞ea de trabalho\projetos\breakout-main\breakout-main\breakout\uteis.c
 	"uteis.h"
 	"raylib.h"
 	"top5_funcoes.h"

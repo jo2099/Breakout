@@ -74,7 +74,7 @@ void tela_pede_nome(char nome[30])  //funcao com nenhuma entrada e uma saida por
         BeginDrawing();
         ClearBackground(BLACK);
 
-        DrawText("insira seu nome",100,100,100,RED);
+        DrawText("insira seu nome",350,100,80,RED);
 
         tecla=GetCharPressed();
         while(tecla>0 && conta_letras<20)
